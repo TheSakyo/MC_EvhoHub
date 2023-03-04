@@ -1,0 +1,55 @@
+name: EvhoHub
+version: latest
+api-version: 1.15
+author: TheSakyo
+description: Plugin du Hub/Lobby du serveur Evhonia !
+main: fr.TheSakyo.EvhoHub.HubMain
+softdepend: [EvhoUtility]
+
+commands:
+  evhohub:
+    description: Commande principale du plugin (EvhoHub)
+  eh:
+    description: Commande alias de 'evhohub' (EvhoHub)
+
+
+  chairs:
+    description: Commande pour s'asseoir sur un escalier (EvhoHub)
+
+  spawn:
+    description: Commande pour se téléporter dans le spawn du lobby/hub (EvhoHub)
+
+  damage:
+    description: Commande administrateur pour activer/désactiver les dommages d'un joueur (EvhoHub)
+
+permissions:
+  evhohub.admin:
+    description: Permission d'administration pour utiliser quelques fonctionnalités techniques pour le plugin (EvhoHub)
+    default: op
+  evhohub.damage.admin:
+    description: Permission d'administration pour activer/désactiver la commande pour les dommages d'un joueur (EvhoHub)
+    default: op
+  evhohub.chairs.admin:
+    description: Permission d'administration pour activer/désactiver la commande pour permettre un joueur de s'asseoir sur un escalier (EvhoHub)
+    default: op
+  evhohub.spawn.admin:
+    description: Permission d'administration pour activer/désactiver la commande pour téléporter un joueur au spawn du lobby/hub  (EvhoHub)
+    default: op
+
+  evhohub.JoueurPro:
+    description: Permission pour récupérer le grade JoueurPro (EvhoHub)
+    default: op
+
+  evhohub.spawn:
+    description: Permission pour aller au spawn du lobby/hub (EvhoHub)
+    default: op
+  evhohub.chairs:
+    description: Permission pour s'asseoir sur un escalier (EvhoHub)
+    default: false
+  evhohub.damage:
+    description: Permission pour activer/désactiver les domages d'un joueur (EvhoHub)
+    default: false
+
+  evhohub.visibility:
+    description: Permission pour cacher/montrer les joueurs (EvhoHub)
+    default: false
