@@ -1,8 +1,8 @@
 package fr.TheSakyo.EvhoHub.manager.commands;
 
 import fr.TheSakyo.EvhoHub.HubMain;
+import net.minecraft.ChatFormatting;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class DamageCommand implements CommandExecutor {
 
 	/* Récupère la class "Main" */
-	private HubMain main;
+	private final HubMain main;
 	public DamageCommand(HubMain pluginMain) { this.main = pluginMain; }
 	/* Récupère la class "Main" */
 
@@ -25,7 +25,7 @@ public class DamageCommand implements CommandExecutor {
 
 		if(sender instanceof Player p) {
 
-			if(!p.hasPermission("evhohub.damage.admin")) { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Vous n'avez pas les permissions requise !"); }
+			if(!p.hasPermission("evhohub.damage.admin")) { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Vous n'avez pas les permissions requise !"); }
 
 			if(args.length >= 2) {
 
@@ -37,35 +37,35 @@ public class DamageCommand implements CommandExecutor {
 
 						if(target.hasPermission("evhohub.damage")) {
 
-							p.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts désactivé pour " + ChatColor.GOLD + target.getName());
-							target.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts désactivé par " + ChatColor.YELLOW + p.getName());
+							p.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts désactivé pour " + ChatFormatting.GOLD + target.getName());
+							target.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts désactivé par " + ChatFormatting.YELLOW + p.getName());
 
 							target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", false);
 
 						} else {
 
-							p.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts activé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-							target.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts activé par " + ChatColor.YELLOW + p.getName() + ChatColor.GREEN + " !");
+							p.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts activé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+							target.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts activé par " + ChatFormatting.YELLOW + p.getName() + ChatFormatting.GREEN + " !");
 
 							target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", true);
 						}
 
 						return true;
 
-					} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+					} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 
-				} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /damage" + ChatColor.GREEN + " <player>"); }
+				} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /damage" + ChatFormatting.GREEN + " <player>"); }
 
 			} else {
 
 				if(p.hasPermission("evhohub.damage")) {
 
-					p.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez désactivé vos dégats");
+					p.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez désactivé vos dégâts");
 					p.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", false);
 
 				} else {
 
-					p.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez activé vos dégats");
+					p.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez activé vos dégâts");
 					p.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", true);
 				}
 
@@ -82,24 +82,24 @@ public class DamageCommand implements CommandExecutor {
 
 					if(target.hasPermission("evhohub.damage")) {
 
-						sender.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts désactivé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-						target.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts désactivé par " + ChatColor.YELLOW + "La Console" + ChatColor.GREEN + " !");
+						sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts désactivé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+						target.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts désactivé par " + ChatFormatting.YELLOW + "La Console" + ChatFormatting.GREEN + " !");
 
 						target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", false);
 
 					} else {
 
-						sender.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts activé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-						target.sendMessage(main.prefix + ChatColor.GREEN + "Dégâts activé par " + ChatColor.YELLOW + "La Console" + ChatColor.GREEN + " !");
+						sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts activé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+						target.sendMessage(main.prefix + ChatFormatting.GREEN + "Dégâts activé par " + ChatFormatting.YELLOW + "La Console" + ChatFormatting.GREEN + " !");
 
 						target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.damage", true);
 					}
 
 					return true;
 
-				} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+				} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 
-			} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /damage" + ChatColor.GREEN + " <player>"); }
+			} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /damage" + ChatFormatting.GREEN + " <player>"); }
 
 		}
 

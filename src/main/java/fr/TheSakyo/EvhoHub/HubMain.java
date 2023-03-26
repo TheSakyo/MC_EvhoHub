@@ -12,9 +12,8 @@ import fr.TheSakyo.EvhoHub.utils.methods.CustomMethod;
 import fr.TheSakyo.EvhoHub.utils.ScoreboardPlayer;
 import fr.TheSakyo.EvhoUtility.UtilityMain;
 import fr.TheSakyo.EvhoUtility.config.ConfigFile;
+import net.minecraft.ChatFormatting;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -44,7 +43,7 @@ public class HubMain extends JavaPlugin implements Listener {
 	// Variable pour Détecter la Console //
 
 	// Variable pour le Nom du Plugin //
-    public String prefix = ChatColor.WHITE + "[" + ChatColor.GOLD + "EvhoHub" + ChatColor.WHITE + "]" + " " + ChatColor.RESET;
+    public String prefix = ChatFormatting.WHITE + "[" + ChatFormatting.GOLD + "EvhoHub" + ChatFormatting.WHITE + "]" + " " + ChatFormatting.RESET;
 	// Variable pour le Nom du Plugin //
 
 
@@ -70,14 +69,14 @@ public class HubMain extends JavaPlugin implements Listener {
 	private void init() {
 
 		// ⬇️ Retourne l'Instance du Plugin et le Plugin vers cette 'Class' Principal "EvhoHubMain" ⬇️ //
-		plugin = (Plugin)this;
+		plugin = this;
 		instance = this;
 		// ⬆️ Retourne l'Instance du Plugin et le Plugin vers cette 'Class' Principal "EvhoHubMain" ⬆️ //
 
 		ConfigFileManager.LoadConfig(); //Recharge les fichiers de configurations du Plugin utiles pour le serveur
 
 		// ⬇️ Vérifie si le serveur fonctionne sous bungee, si c'est le cas, on enregistre les canaux 'bungee' ⬇️ //
-		if(UtilityMain.getInstance().hasBungee() == true) {
+		if(UtilityMain.getInstance().hasBungee()) {
 
 			this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 		}
@@ -100,10 +99,10 @@ public class HubMain extends JavaPlugin implements Listener {
 		//Vérifie si trouve bien le plugin "EvhoUtility" dans le serveur
 		if(getUtilityPlugin().isEnabled()) {
 
-			this.init(); //Fait Appel à une méthode pour bien intialiser le Plugin
+			this.init(); //Fait Appel à une méthode pour bien initialiser le Plugin
 
 			// Message disant que le plugin est activé //
-			console.sendMessage(prefix + ChatColor.GREEN + "Hub/Lobby Enabled !");
+			console.sendMessage(prefix + ChatFormatting.GREEN + "Hub/Lobby Enabled !");
 			// Message disant que le plugin est activé //
 
 			//Récupère la class des évènements //
@@ -111,15 +110,15 @@ public class HubMain extends JavaPlugin implements Listener {
 			//Récupère la class des évènements //
 
 			// Récupère la commande du plugin //
-			this.getCommand("evhohub").setExecutor((CommandExecutor)new HubCommand(this));
-			this.getCommand("eh").setExecutor((CommandExecutor)new HubCommand(this));
+			this.getCommand("evhohub").setExecutor(new HubCommand(this));
+			this.getCommand("eh").setExecutor(new HubCommand(this));
 			// Récupère la commande du plugin //
 
 
 			// Récupère quelque commande utile du plugin //
-			this.getCommand("chairs").setExecutor((CommandExecutor)new ChairsCommand(this));
-			this.getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(this));
-			this.getCommand("damage").setExecutor((CommandExecutor)new DamageCommand(this));
+			this.getCommand("chairs").setExecutor(new ChairsCommand(this));
+			this.getCommand("spawn").setExecutor(new SpawnCommand(this));
+			this.getCommand("damage").setExecutor(new DamageCommand(this));
 			// Récupère quelque commande utile du plugin //
 
 			this.updateScoreboardAndMenuGUI(); //Actualise le Scoreboard et le Menu 'GUI' pour les joueurs
@@ -128,8 +127,8 @@ public class HubMain extends JavaPlugin implements Listener {
 
 			//Demande le plugin "EvhoUtility" pour le fonctionnement du plugin
 			console.sendMessage("");
-			console.sendMessage(prefix + ChatColor.RED + "Veuillez nous excuser, ce plugin requiert un plugin spécifique !");
-			console.sendMessage(prefix + ChatColor.RED + "Le plugin est le suivant : " + ChatColor.YELLOW + "EvhoUtility");
+			console.sendMessage(prefix + ChatFormatting.RED + "Veuillez nous excuser, ce plugin requiert un plugin spécifique !");
+			console.sendMessage(prefix + ChatFormatting.RED + "Le plugin est le suivant : " + ChatFormatting.YELLOW + "EvhoUtility");
 			console.sendMessage("");
 
 			//Désactive le plugin
@@ -147,7 +146,7 @@ public class HubMain extends JavaPlugin implements Listener {
   		instance = null;
 
 		// Message disant que le plugin est désactivé //
-  		console.sendMessage(prefix + ChatColor.RED + "Hub/Lobby Disabled !");
+  		console.sendMessage(prefix + ChatFormatting.RED + "Hub/Lobby Disabled !");
 	}
 	/* Désactivation du plugin */
 
@@ -159,7 +158,7 @@ public class HubMain extends JavaPlugin implements Listener {
 
 	public void reloadPlugin() {
 
-		this.init(); //Fait Appel à une méthode pour bien intialiser le Plugin
+		this.init(); //Fait Appel à une méthode pour bien initialiser le Plugin
 		this.updateScoreboardAndMenuGUI(); //Actualise le Scoreboard et le Menu 'GUI' pour les joueurs
 	}
 
@@ -192,17 +191,13 @@ public class HubMain extends JavaPlugin implements Listener {
 
 								/* ----------------------------------- */
 
-					// Aprés trois secondes, on affichage le Scoreboard au joueur //
-					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(getInstance(), new Runnable() {
-						@Override
-						public void run() {
+					// Aprés trois secondes, on affiche le Scoreboard au joueur //
+					Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(getInstance(), () -> {
 
-							ScoreboardPlayer scoreboard = new ScoreboardPlayer(online, getInstance());
-							scoreboard.getScoreBoard(true, true);
-						}
-
-					} , 20 * 3);
-					// Aprés trois secondes, on affichage le Scoreboard au joueur //
+                        ScoreboardPlayer scoreboard = new ScoreboardPlayer(online, getInstance());
+                        scoreboard.getScoreBoard(true, true);
+                    }, 20 * 3);
+					// Aprés trois secondes, on affiche le Scoreboard au joueur //
 				}
 				// ⬆️ Actualise le menu et le scoreboard pour tous les joueurs ⬆️ //
 			}

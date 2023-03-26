@@ -1,8 +1,8 @@
 package fr.TheSakyo.EvhoHub.manager.commands;
 
 import fr.TheSakyo.EvhoHub.HubMain;
+import net.minecraft.ChatFormatting;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 public class SpawnCommand implements CommandExecutor {
 
 	/* Récupère la class "Main" */
-	private HubMain main;
+	private final HubMain main;
 	public SpawnCommand(HubMain pluginMain) { this.main = pluginMain; }
 	/* Récupère la class "Main" */
 
@@ -37,30 +37,30 @@ public class SpawnCommand implements CommandExecutor {
 
 					Player target = Bukkit.getServer().getPlayer(args[1]);
 
-					if(!p.hasPermission("evhohub.spawn.admin")) { p.sendMessage(ChatColor.RED + "Vous n'avez pas la permission requise !"); }
+					if(!p.hasPermission("evhohub.spawn.admin")) { p.sendMessage(ChatFormatting.RED + "Vous n'avez pas la permission requise !"); }
 					else {
 
 						if(target != null) {
 
 							target.teleport(spawnLocationWorld.add(0.0, 1.0, 0.0));
 
-							sender.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez téléporté " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " au spawn du hub/lobby !");
-							target.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez été téléporté au spawn du hub/lobby par " + ChatColor.YELLOW + p.getName() + ChatColor.GREEN + " !");
+							sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez téléporté " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " au spawn du hub/lobby !");
+							target.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez été téléporté au spawn du hub/lobby par " + ChatFormatting.YELLOW + p.getName() + ChatFormatting.GREEN + " !");
 
 							return true;
 
-						} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+						} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 					}
 
-				} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /spawn" + ChatColor.GREEN + " <player>"); }
+				} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /spawn" + ChatFormatting.GREEN + " <player>"); }
 
 			} else {
 
-				if(!p.hasPermission("evhohub.spawn")) { p.sendMessage(ChatColor.RED + "Vous n'avez pas la permission requise !"); }
+				if(!p.hasPermission("evhohub.spawn")) { p.sendMessage(ChatFormatting.RED + "Vous n'avez pas la permission requise !"); }
 				else {
 
 					p.teleport(spawnLocationWorld.add(0.0, 1.0, 0.0));
-					sender.sendMessage(main.prefix + ChatColor.GRAY.toString() + ChatColor.ITALIC.toString() + "Vous avez été téléporté au spawn du hub/lobby !");
+					sender.sendMessage(main.prefix + ChatFormatting.GRAY.toString() + ChatFormatting.ITALIC.toString() + "Vous avez été téléporté au spawn du hub/lobby !");
 
 					return true;
 				}
@@ -76,14 +76,14 @@ public class SpawnCommand implements CommandExecutor {
 
 					target.teleport(spawnLocationWorld.add(0.0, 1.0, 0.0));
 
-					sender.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez téléporté " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " au spawn du hub/lobby !");
-					target.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez été téléporté au spawn du hub/lobby par " + ChatColor.YELLOW + "La Console" + ChatColor.GREEN + " !");
+					sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez téléporté " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " au spawn du hub/lobby !");
+					target.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez été téléporté au spawn du hub/lobby par " + ChatFormatting.YELLOW + "La Console" + ChatFormatting.GREEN + " !");
 
 					return true;
 
-				} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+				} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 
-			} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /spawn" + ChatColor.GREEN + " <player>"); }
+			} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /spawn" + ChatFormatting.GREEN + " <player>"); }
 
 		}
 

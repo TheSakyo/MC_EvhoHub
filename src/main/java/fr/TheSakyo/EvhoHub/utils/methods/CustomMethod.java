@@ -4,8 +4,8 @@ import fr.TheSakyo.EvhoHub.HubMain;
 import fr.TheSakyo.EvhoUtility.UtilityMain;
 import fr.TheSakyo.EvhoUtility.config.ConfigFile;
 import fr.TheSakyo.EvhoUtility.utils.entity.player.PlayerEntity;
+import net.minecraft.ChatFormatting;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -28,7 +28,7 @@ public class CustomMethod {
 	 */
 	public static void ResetMenu(Player p) {
 
-		p.setExp(0); // Remet à zéro les points d'éxpériences du Joueur
+		p.setExp(0); // Remet à zéro les points d'expériences du Joueur
 		p.setLevel(0); // Remet à zéro les niveaux du Joueur
 
 
@@ -40,8 +40,8 @@ public class CustomMethod {
 
 		ItemStack game = new ItemStack(org.bukkit.Material.CLOCK, 1);
 		ItemMeta CustomG = game.getItemMeta();
-		CustomG.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + "Mini-Jeux"));
-		CustomG.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.YELLOW + "[!] Cliquez pour jouer [!]")));
+		CustomG.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD.toString() + "Mini-Jeux"));
+		CustomG.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.YELLOW + "[!] Cliquez pour jouer [!]")));
 		game.setItemMeta(CustomG);
 
 		p.getInventory().setItem(4, game);
@@ -49,24 +49,24 @@ public class CustomMethod {
 
 		ItemStack shop = new ItemStack(org.bukkit.Material.EMERALD, 1);
 		ItemMeta CustomS = shop.getItemMeta();
-		CustomS.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.DARK_GREEN.toString() + ChatColor.BOLD.toString() + "Shop"));
-		CustomS.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.YELLOW + "Achetez quelques petits " + ChatColor.YELLOW.toString() + ChatColor.BOLD.toString() + "BONUS " + ChatColor.YELLOW + "!")));
+		CustomS.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.DARK_GREEN.toString() + ChatFormatting.BOLD.toString() + "Shop"));
+		CustomS.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.YELLOW + "Achetez quelques petits " + ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD.toString() + "BONUS " + ChatFormatting.YELLOW + "!")));
 		shop.setItemMeta(CustomS);
 
 		p.getInventory().setItem(6, shop);
 
 		ItemStack option = new ItemStack(org.bukkit.Material.MAGMA_CREAM, 1);
 		ItemMeta CustomO = option.getItemMeta();
-		CustomO.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.BOLD + "Paramètres"));
-		CustomO.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.YELLOW + "Quelques petites options utiles !")));
+		CustomO.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.BOLD + "Paramètres"));
+		CustomO.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.YELLOW + "Quelques petites options utiles !")));
 		option.setItemMeta(CustomO);
 
 		p.getInventory().setItem(8, option);
 
 		 ItemStack hub = new ItemStack(org.bukkit.Material.END_CRYSTAL, 1);
 		ItemMeta CustomH = hub.getItemMeta();
-		CustomH.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Hubs"));
-		CustomH.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatColor.YELLOW + "Changez de hubs !")));
+		CustomH.displayName(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Hubs"));
+		CustomH.lore(List.of(fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.StringToComponent(ChatFormatting.YELLOW + "Changez de hubs !")));
 		hub.setItemMeta(CustomH);
 
 		p.getInventory().setItem(0, hub);
@@ -99,8 +99,8 @@ public class CustomMethod {
             getItemDisplayName = fr.TheSakyo.EvhoUtility.utils.custom.CustomMethod.ComponentToString(item.getItemMeta().displayName());
         }
 
-        if(item.getType() == materialItem && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && getItemDisplayName.equalsIgnoreCase(displaynameItem)) return true;
-        return false;
+        return item.getType() == materialItem && item.hasItemMeta() && item.getItemMeta().hasDisplayName()
+				&& getItemDisplayName.equalsIgnoreCase(displaynameItem);
     }
 
     // ~~~~ Méthode pour vérifier l'item cliqué dans l'inventaire (PlayerInteractEvent) ~~~~ //

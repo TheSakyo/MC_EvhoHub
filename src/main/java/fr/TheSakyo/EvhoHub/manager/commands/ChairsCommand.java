@@ -1,8 +1,8 @@
 package fr.TheSakyo.EvhoHub.manager.commands;
 
 import fr.TheSakyo.EvhoHub.HubMain;
+import net.minecraft.ChatFormatting;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class ChairsCommand implements CommandExecutor {
 
 	/* Récupère la class "Main" */
-	private HubMain main;
+	private final HubMain main;
 	public ChairsCommand(HubMain pluginMain) { this.main = pluginMain; }
 	/* Récupère la class "Main" */
 
@@ -27,7 +27,7 @@ public class ChairsCommand implements CommandExecutor {
 
 			if(args.length >= 2) {
 
-				if(!p.hasPermission("evhohub.chairs.admin")) { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /chairs"); }
+				if(!p.hasPermission("evhohub.chairs.admin")) { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /chairs"); }
 
 				else {
 
@@ -39,36 +39,36 @@ public class ChairsCommand implements CommandExecutor {
 
 							if(target.hasPermission("evhohub.chairs")) {
 
-								p.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise désactivé pour " + ChatColor.GOLD + target.getName());
-								target.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise désactivé par " + ChatColor.YELLOW + p.getName());
+								p.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise désactivé pour " + ChatFormatting.GOLD + target.getName());
+								target.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise désactivé par " + ChatFormatting.YELLOW + p.getName());
 
 								target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", false);
 
 							} else {
 
-								p.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise activé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-								target.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise activé par " + ChatColor.YELLOW + p.getName() + ChatColor.GREEN + " !");
+								p.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise activé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+								target.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise activé par " + ChatFormatting.YELLOW + p.getName() + ChatFormatting.GREEN + " !");
 
 								target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", true);
 							}
 
 							return true;
 
-						} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+						} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 
-					} else { p.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /chairs" + ChatColor.GREEN + " <player>"); }
+					} else { p.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /chairs" + ChatFormatting.GREEN + " <player>"); }
 				}
 
 			} else {
 
 				if(p.hasPermission("evhohub.chairs")) {
 
-					p.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez désactivé le Mode Chaise");
+					p.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez désactivé le Mode Chaise");
 					p.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", false);
 
 				} else {
 
-					p.sendMessage(main.prefix + ChatColor.GREEN + "Vous avez activé le Mode Chaise");
+					p.sendMessage(main.prefix + ChatFormatting.GREEN + "Vous avez activé le Mode Chaise");
 					p.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", true);
 				}
 
@@ -85,24 +85,24 @@ public class ChairsCommand implements CommandExecutor {
 
 					if(target.hasPermission("evhohub.chairs")) {
 
-						sender.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise désactivé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-						target.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise désactivé par " + ChatColor.YELLOW + "La Console" + ChatColor.GREEN + " !");
+						sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise désactivé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+						target.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise désactivé par " + ChatFormatting.YELLOW + "La Console" + ChatFormatting.GREEN + " !");
 
 						target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", false);
 
 					} else {
 
-						sender.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise activé pour " + ChatColor.GOLD + target.getName() + ChatColor.GREEN + " !");
-						target.sendMessage(main.prefix + ChatColor.GREEN + "Mode Chaise activé par " + ChatColor.YELLOW + "La Console" + ChatColor.GREEN + " !");
+						sender.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise activé pour " + ChatFormatting.GOLD + target.getName() + ChatFormatting.GREEN + " !");
+						target.sendMessage(main.prefix + ChatFormatting.GREEN + "Mode Chaise activé par " + ChatFormatting.YELLOW + "La Console" + ChatFormatting.GREEN + " !");
 
 						target.addAttachment(HubMain.pm.getPlugin("EvhoHub")).setPermission("evhohub.chairs", true);
 					}
 
 					return true;
 
-				} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Le joueur est introuvable !"); }
+				} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Le joueur est introuvable !"); }
 
-			} else { sender.sendMessage(main.prefix + ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Erreur : " + ChatColor.RED + "Essayez /chairs" + ChatColor.GREEN + " <player>"); }
+			} else { sender.sendMessage(main.prefix + ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Erreur : " + ChatFormatting.RED + "Essayez /chairs" + ChatFormatting.GREEN + " <player>"); }
 
 		}
 

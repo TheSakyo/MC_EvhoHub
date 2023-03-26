@@ -6,7 +6,7 @@ import fr.TheSakyo.EvhoUtility.config.ConfigFile;
 public class ConfigFileManager extends fr.TheSakyo.EvhoUtility.config.ConfigFileManager {
 
     //Récupère la class "Main" en tant que "static"
-    private static HubMain mainInstance = HubMain.getInstance();
+    private static final HubMain mainInstance = HubMain.getInstance();
 
 
     // ⬇️ *** CHARGEMENT DES FICHIERS DE CONFIGURATIONS D'EVHOHUB *** ⬇️ //
