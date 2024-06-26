@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fr.TheSakyo.EvhoHub.EvhoHub.test.iml" filepath="$PROJECT_DIR$/.idea/modules/fr.TheSakyo.EvhoHub.EvhoHub.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-workspace.EvhoHub.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-workspace.EvhoHub.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-workspace.EvhoHub.test.iml" filepath="$PROJECT_DIR$/.idea/modules/java-workspace.EvhoHub.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sacha.java-workspace.EvhoHub.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sacha.java-workspace.EvhoHub.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sacha.java-workspace.EvhoHub.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sacha.java-workspace.EvhoHub.test.iml" />
     </modules>
   </component>
 </project>
