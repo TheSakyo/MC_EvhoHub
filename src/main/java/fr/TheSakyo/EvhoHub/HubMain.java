@@ -172,8 +172,6 @@ public class HubMain extends JavaPlugin implements Listener {
 	/************************************************************/
 
 
-
-
 	/*** ⬇️ Actualise le Scoreboard et le Menu 'GUI' pour les joueurs ⬇️ ***/
 	private void updateScoreboardAndMenuGUI() {
 
