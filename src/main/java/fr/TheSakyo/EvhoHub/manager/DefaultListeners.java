@@ -377,7 +377,6 @@ public class DefaultListeners implements Listener {
 				} if(CustomMethod.getClickedItem(current, Material.HOPPER, ChatFormatting.RED.toString() + ChatFormatting.BOLD.toString() + "Dropper")) {
 
 					CustomMethod.connectToServer(p, "dropper");
-
 				}
 
 			} if(title.equalsIgnoreCase(ChatFormatting.DARK_GRAY + "Options")) {
