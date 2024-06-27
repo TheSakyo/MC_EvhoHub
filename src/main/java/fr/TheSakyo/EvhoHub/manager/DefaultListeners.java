@@ -368,7 +368,7 @@ public class DefaultListeners implements Listener {
 
 				} if(CustomMethod.getClickedItem(current, Material.DIAMOND_SWORD, ChatFormatting.GREEN.toString() + ChatFormatting.BOLD.toString() + "PvP-Arena")) {
 
-					CustomMethod.connectToServer(p, "test");
+					CustomMethod.connectToServer(p, "arena_game");
 
 				} if(CustomMethod.getClickedItem(current, Material.SNOWBALL, ChatFormatting.BLUE.toString() + ChatFormatting.BOLD.toString() + "PaintBall")) {
 
